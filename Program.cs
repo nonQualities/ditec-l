@@ -1,5 +1,6 @@
 using DITEC.Attendance.Data;
 using Nelknet.LibSQL.Data;
+using Nelknet.LibSQL.Data.Exceptions;
 using QRCoder;
 using System.Text.Json;
 
