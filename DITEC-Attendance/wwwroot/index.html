@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>DITEC · Attendance Checkpoint</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <span class="mark">DITEC</span>
+    <span class="sub">Attendance Checkpoint</span>
+  </div>
+  <nav>
+    <a href="/index.html" class="active">Kiosk</a>
+    <a href="/admin.html">Admin</a>
+  </nav>
+  <div class="clock" id="clock">--:--:--</div>
+</div>
+
+<div class="wrap">
+  <div class="grid two">
+
+    <div class="panel">
+      <p class="eyebrow">Step 1 — Present badge</p>
+      <h2 id="stepTitle">Scan QR Badge</h2>
+      <div class="viewport" id="viewport">
+        <div id="qr-reader"></div>
+        <video id="faceVideo" autoplay muted playsinline style="display:none;"></video>
+        <div class="scan-frame"></div>
+        <div class="status-pill scanning" id="statusPill"><span class="dot"></span><span id="statusText">Scanning</span></div>
+      </div>
+      <div id="faceControls" style="display:none; margin-top:14px; display:flex; gap:10px;">
+        <button class="btn primary block" id="captureBtn">Capture &amp; Verify Face</button>
+        <button class="btn ghost" id="cancelFaceBtn">Cancel</button>
+      </div>
+      <p class="hint">In-time is logged once, before 11:00 AM. Out-time may be logged multiple times after 5:00 PM.</p>
+    </div>
+
+    <div class="panel">
+      <p class="eyebrow">Step 2 — Identity</p>
+      <h2>Badge Status</h2>
+      <div id="badgeArea">
+        <div class="empty">Waiting for a badge to be scanned…</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+<script src="/js/kiosk.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <RootNamespace>DITEC.Attendance</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Nelknet.LibSQL.Data: ADO.NET provider for libSQL. It speaks the same
+         SQLite dialect as Microsoft.Data.Sqlite but can also open a remote
+         connection to a Turso database over HTTPS (used in production), or a
+         local .db file (used for local development) — same API either way.
+         QRCoder generates QR PNGs server-side. -->
+    <PackageReference Include="Nelknet.LibSQL.Data" Version="0.2.9" />
+    <PackageReference Include="QRCoder" Version="1.6.0" />
+  </ItemGroup>
+
+</Project>

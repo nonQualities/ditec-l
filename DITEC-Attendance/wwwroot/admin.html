@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DITEC · Admin</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <span class="mark">DITEC</span>
+    <span class="sub">Admin Console</span>
+  </div>
+  <nav>
+    <a href="/index.html">Kiosk</a>
+    <a href="/admin.html" class="active">Admin</a>
+  </nav>
+  <div class="clock" id="clock">--:--:--</div>
+</div>
+
+<div class="wrap">
+  <div class="grid two">
+
+    <div class="panel">
+      <p class="eyebrow">Directory</p>
+      <h2>Register Employee</h2>
+      <form id="registerForm">
+        <label for="code">Employee Code</label>
+        <input id="code" name="code" placeholder="ENG-014" required />
+        <label for="name">Full Name</label>
+        <input id="name" name="name" placeholder="Jane Jamir" required />
+        <label for="dept">Department</label>
+        <input id="dept" name="dept" placeholder="Engineering" />
+        <button class="btn primary block" style="margin-top:16px;" type="submit">Register &amp; Generate Badge</button>
+      </form>
+      <p class="hint">Registering an employee issues a unique QR badge token. Print the badge, then enroll their face before first use at the kiosk.</p>
+    </div>
+
+    <div class="panel">
+      <p class="eyebrow">Today</p>
+      <h2>Attendance Report</h2>
+      <div style="display:flex; gap:10px; align-items:end; margin-bottom:14px;">
+        <div style="flex:1;">
+          <label for="reportDate" style="margin-top:0;">Date</label>
+          <input id="reportDate" type="date" />
+        </div>
+        <button class="btn" id="exportBtn" type="button">Export CSV</button>
+      </div>
+      <div id="reportTableWrap"><div class="empty">Loading…</div></div>
+    </div>
+
+  </div>
+
+  <div class="panel" style="margin-top:20px;">
+    <p class="eyebrow">All Employees</p>
+    <h2>Directory</h2>
+    <div id="employeeTableWrap"><div class="empty">Loading…</div></div>
+  </div>
+</div>
+
+<!-- Badge modal -->
+<div class="overlay" id="badgeOverlay" style="display:none;">
+  <div class="modal">
+    <h3>Employee Badge</h3>
+    <div class="print-card" id="printCard">
+      <div class="code" id="badgeCode"></div>
+      <div class="name" id="badgeName"></div>
+      <img id="badgeQr" alt="QR badge" />
+    </div>
+    <div class="modal-actions">
+      <button class="btn" id="printBtn">Print</button>
+      <button class="btn ghost" id="closeBadgeBtn">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Face enrollment modal -->
+<div class="overlay" id="faceOverlay" style="display:none;">
+  <div class="modal">
+    <h3>Enroll Face — <span id="enrollName"></span></h3>
+    <div class="viewport" style="aspect-ratio:1/1;">
+      <video id="enrollVideo" autoplay muted playsinline style="width:100%;height:100%;object-fit:cover;"></video>
+    </div>
+    <p class="hint" id="enrollHint">Center the face in frame, then capture. Good lighting improves match accuracy.</p>
+    <div class="modal-actions">
+      <button class="btn primary block" id="enrollCaptureBtn">Capture Face</button>
+      <button class="btn ghost" id="closeEnrollBtn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>
