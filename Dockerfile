@@ -7,7 +7,13 @@ COPY DITEC.Attendance.csproj ./
 RUN dotnet restore DITEC.Attendance.csproj
 
 COPY . .
-RUN dotnet publish DITEC.Attendance.csproj -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish DITEC.Attendance.csproj \
+    -c Release \
+    -r linux-x64 \
+    --self-contained false \
+    -o /app/publish \
+    /p:UseAppHost=false \
+    /p:CopyLocalLockFileAssemblies=true
 
 # ---- Runtime stage ----
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
